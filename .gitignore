@@ -1,0 +1,11 @@
+# Python virtual env
+.venv
+
+# isso
+*.db
+*.sqlite
+*.log
+
+# Disqus export
+*.xml
+*.gz
