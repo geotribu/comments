@@ -5,7 +5,7 @@ WSGIPythonOptimize 2
     ServerName comments.geotribu.fr
     DocumentRoot /var/www/geotribu/comments/
 
-    WSGIDaemonProcess geotribucomments python-home=/var/www/geotribu/comments/.venv python-path=/var/www/geotribu/comments/ home=/var/www/geotribu/comments user=www-data group=www-data processes=2 threads=5
+    WSGIDaemonProcess geotribucomments python-home=/var/www/geotribu/comments/.venv python-path=/var/www/geotribu/comments/ home=/var/www/geotribu/comments user=geotribu group=www-data processes=2 threads=5
     WSGIScriptAlias / /var/www/geotribu/comments/isso_wsgi.py
 
     <Directory /var/www/geotribu/comments>
