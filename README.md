@@ -81,6 +81,13 @@ python -m pip install -U isso gevent
 python -m pip install -U mod-wsgi==4.7.*
 ```
 
+Appliquer les droits :
+
+```bash
+sudo chown -R geotribu:www-data /var/www/geotribu/cdn/
+sudo chmod 770 /var/www/geotribu/cdn/
+```
+
 ### Configuration Isso
 
 Copier les fichiers `isso-prod.cfg` et `isso-wsgi.py` sur le serveur dans `/var/www/geotribu/comments`.
@@ -97,9 +104,16 @@ Paramètres à ne jamais stocker dans le dépôt ou diffuser :
 
 > TO DOC
 
+Vérifier que la compression est bien activée :
+
+- sur le CSS: <https://www.whatsmyip.org/http-compression-test/?url=aHR0cHM6Ly9jb21tZW50cy5nZW90cmlidS5mci9jc3MvaXNzby5jc3M=>
+- sur le JavaScript : <https://www.whatsmyip.org/http-compression-test/?url=aHR0cHM6Ly9jb21tZW50cy5nZW90cmlidS5mci9qcy9lbWJlZC5taW4uanM=>
+- sur l'API : <https://www.whatsmyip.org/http-compression-test/?url=aHR0cHM6Ly9jb21tZW50cy5nZW90cmlidS5mci9sYXRlc3Q/bGltaXQ9MTA=>
+- sur les flux RSS : <https://www.whatsmyip.org/http-compression-test/?url=aHR0cHM6Ly9jb21tZW50cy5nZW90cmlidS5mci9mZWVkP3VyaT0vYXJ0aWNsZXMvMjAyMS8yMDIxLTA0LTA3X2NhcnRlX3Jlc2VhdV9idXMv>
+
 #### Ressources
 
-> TO DOC
+- voir la [doc d'El Geo Paso](https://elgeopaso.readthedocs.io/fr/latest/deployment/apache.html)
 
 ### Certificat SSL
 
