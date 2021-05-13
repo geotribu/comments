@@ -127,6 +127,8 @@ Paramètres à ne jamais stocker dans le dépôt ou diffuser :
     sudo certbot --apache
     ```
 
+    ![Certbot GeoRezo Geotribu](https://cdn.geotribu.fr/img/internal/comments/georezo_installed_sites_certbot.png "Sites identifiées par le certbot")
+
 3. Lister les sites activés et constater que le certbot a bien fait son travail :
 
     ```bash
