@@ -60,6 +60,16 @@ Pour pouvoir envoyer des notifications, on utilise un compte email lié au domai
 
 > Lien vers l'[interface de gestion](https://admin.gandi.net/domain/5e42db82-6b7c-11ea-8925-00163ea99cff/geotribu.fr/mail/mailboxes/5a52d348-6cbf-42f9-ab0f-7f9f21c9a8c0/edit)
 
+### Notification Slack
+
+Pour chaque nouveau commentaire, une notification enrichie est envoyée sur le Slack de Geotribu, via l'application Geotribot (utilisée également par le processus de sauvegarde) :
+
+- Administration de Geotribot : <https://geotribu.slack.com/apps/A020C9Q93BK-geotribot>
+- Gestion des webhooks <https://api.slack.com/apps/A020C9Q93BK>
+- [Interface de conception de la notification enrichie](https://app.slack.com/block-kit-builder/TUKTSG55K#%7B%22blocks%22:%5B%7B%22type%22:%22header%22,%22text%22:%7B%22type%22:%22plain_text%22,%22text%22:%22:speech_balloon:%20Nouveau%20commentaire%22,%22emoji%22:true%7D%7D,%7B%22type%22:%22section%22,%22text%22:%7B%22type%22:%22mrkdwn%22,%22text%22:%22*Auteur(e)%20:*%20$AUTHOR_NAME%20$AUTHOR_EMAIL%20$AUTHOR_WEBSITE%22%7D%7D,%7B%22type%22:%22section%22,%22text%22:%7B%22type%22:%22mrkdwn%22,%22text%22:%22*IP%20:*%20$COMMENT_IP_ADDRESS%22%7D%7D,%7B%22type%22:%22section%22,%22text%22:%7B%22type%22:%22mrkdwn%22,%22text%22:%22*Commentaire%20:*%5Cn$COMMENT_TEXT%22%7D%7D,%7B%22type%22:%22divider%22%7D,%7B%22type%22:%22actions%22,%22elements%22:%5B%7B%22type%22:%22button%22,%22text%22:%7B%22type%22:%22plain_text%22,%22emoji%22:true,%22text%22:%22:eye-in-speech-bubble:%20Afficher%22%7D,%22url%22:%22https://static.geotribu.fr/rdp/2021/rdp_2021-05-07/#isso-58%22%7D,%7B%22type%22:%22button%22,%22text%22:%7B%22type%22:%22plain_text%22,%22emoji%22:true,%22text%22:%22:white_check_mark:%20Approuver%22%7D,%22style%22:%22primary%22,%22url%22:%22https://comments.geotribu.fr/id/XXXX/activate/%22%7D,%7B%22type%22:%22button%22,%22text%22:%7B%22type%22:%22plain_text%22,%22emoji%22:true,%22text%22:%22:wastebasket:%20Rejeter%22%7D,%22style%22:%22danger%22,%22url%22:%22https://comments.geotribu.fr/id/XXXX/delete/%22%7D%5D%7D%5D%7D)
+
+:warning: Attention, cette fonctionnalité a été développée par [Julien](https://github.com/guts) et sa disponibilité dans Isso dépend de l'acceptation de la [Pull Request](https://github.com/posativ/isso/pull/724) et de la diffusion d'une nouvelle version. Si besoin, installer Isso depuis [la branche du fork](https://github.com/Guts/isso/tree/notify/webhook).
+
 ----
 
 ## Déploiement
