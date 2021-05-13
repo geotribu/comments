@@ -66,6 +66,18 @@ Pour pouvoir envoyer des notifications, on utilise un compte email lié au domai
 
 Le module est déployé sur le serveur prêté par GeoRezo, aux côtés du [mini-CDN de Geotribu](https://github.com/geotribu/minimalist-cdn) et d'[El Geo Paso](https://github.com/Guts/elgeopaso).
 
+Certaines dépendances système sont donc déjà en place sur ce serveur. Dans le cas d'une nouvelle installation, s'assurer que Python 3.7+ et SQLite sont installés.
+
+Exemple pour Python 3.7 sur Ubuntu 18.04 :
+
+```bash
+# ajouter le dépôt dans lequel trouver Python 3.7
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+sudo apt install build-essential python3-pip python3.7 python3.7-dev python3.7-venv sqlite3
+```
+
 ### Installation
 
 Etapes suivies, dans le cas d'un environnement Apache et mod_wsgi déjà configuré pour les besoins d'El Geo Paso (voir [la documentation](https://elgeopaso.readthedocs.io/fr/latest/deployment/apache.html)) :
@@ -102,7 +114,27 @@ Paramètres à ne jamais stocker dans le dépôt ou diffuser :
 
 ### Configuration Apache
 
-> TO DOC
+1. Copier et renommer le fichier `apache.vhost` en `geotribu-comments.conf` dans les sites disponibles (`/etc/apache2/sites-available`)
+2. Activer le site
+
+### Certificat SSL
+
+1. Installer le [certbot](https://certbot.eff.org/instructions) : suivre [la documentation El Geo Paso](https://elgeopaso.readthedocs.io/fr/latest/deployment/apache.html#generer-le-certificat-ssl-avec-let-s-encrypt)
+2. Lancer le processus de création des certificats :
+
+    ```bash
+    # lancer le processus en choisissant comments.
+    sudo certbot --apache
+    ```
+
+3. Lister les sites activés et constater que le certbot a bien fait son travail :
+
+    ```bash
+    geotribu@geotribu:~$ ls /etc/apache2/sites-enabled/
+    elgeopaso.conf  elgeopaso-redirect.conf  geotribu-cdn.conf  geotribu-cdn-le-ssl.conf  geotribu-cdn-le-ssl.conf.save  geotribu-comments.conf  geotribu-comments-le-ssl.conf
+    ```
+
+### Vérifications
 
 Vérifier que la compression est bien activée :
 
@@ -111,16 +143,9 @@ Vérifier que la compression est bien activée :
 - sur l'API : <https://www.whatsmyip.org/http-compression-test/?url=aHR0cHM6Ly9jb21tZW50cy5nZW90cmlidS5mci9sYXRlc3Q/bGltaXQ9MTA=>
 - sur les flux RSS : <https://www.whatsmyip.org/http-compression-test/?url=aHR0cHM6Ly9jb21tZW50cy5nZW90cmlidS5mci9mZWVkP3VyaT0vYXJ0aWNsZXMvMjAyMS8yMDIxLTA0LTA3X2NhcnRlX3Jlc2VhdV9idXMv>
 
-#### Ressources
+### Ressources
 
 - voir la [doc d'El Geo Paso](https://elgeopaso.readthedocs.io/fr/latest/deployment/apache.html)
-
-### Certificat SSL
-
-> TO DOC
-
-#### Ressources
-
 - erreur [Name duplicates previous WSGI daemon definition.](https://github.com/certbot/certbot/issues/4880)
 
 ----
