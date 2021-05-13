@@ -21,9 +21,18 @@ WSGIPythonOptimize 2
         AddOutputFilterByType DEFLATE application/json
     </Directory> 
 
+    # Active le cache pour les fichiers statiques pour 1 année
+    <FilesMatch "\.(ico|pdf|flv|jfif|jpg|jpeg|png|gif|js|css|webp)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </FilesMatch>
+
+    # Indique que certains headers HTTP peuvent varier
+    Header append Vary User-Agent
+    Header append Vary Accept-Encoding
+
     # HSTS - forcer les connexions en https pendant 180 jours
     Header always set Strict-Transport-Security "max-age=15552001; includeSubDomains;"
-    # enable HTTP/2, if available
+    # Active HTTP/2, si disponible
     Protocols h2 http/1.1
 
     # Apache log configuration
