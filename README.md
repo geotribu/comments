@@ -1,5 +1,7 @@
 # Module de commentaires pour Geotribu
 
+⚠️ La gestion du module de commentaires est désormais gérée dans le déphttps://github.com/geotribu/infra ⚠️
+
 Scripts et fichiers de configuration du module de commentaires du site de Geotribu, basé sur [isso](https://posativ.org/isso/) ([dépôt GitHub](https://github.com/posativ/isso)).
 
 ## Liens utiles
