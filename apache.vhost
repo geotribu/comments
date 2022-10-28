@@ -8,6 +8,13 @@ WSGIPythonOptimize 2
     WSGIDaemonProcess geotribucomments python-home=/var/www/geotribu/comments/.venv python-path=/var/www/geotribu/comments/ home=/var/www/geotribu/comments user=geotribu group=www-data processes=2 threads=5
     WSGIScriptAlias / /var/www/geotribu/comments/isso_wsgi.py
 
+    # HTTP/2
+    <IfModule http2_module>
+        ProtocolsHonorOrder On
+        Protocols h2 h2c http/1.1
+    </IfModule>
+
+
     <Directory /var/www/geotribu/comments>
         WSGIProcessGroup geotribucomments
         WSGIScriptReloading On
